@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Form Validation</title>
+</head>
+<body>
+
+<form th:action="@{/form}" method="post"  th:object="${formValidation}" enctype="multipart/form-data">
+
+
+    decmalmax:
+    <input type="text" th:field="*{decmalmax}" />  <span th:text="'(decmalmax less than or equal to 25.00)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('decmalmax')}" th:errors="*{decmalmax}"/>
+
+    <br/><br/>
+    decimalmin:
+    <input type="text" th:field="*{decimalmin}" /> <span th:text="'(decimalmin greater than or equal to 8.00)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('decimalmin')}" th:errors="*{decimalmin}"/>
+
+    <br/><br/>
+    digits:
+    <input type="text" th:field="*{digits}" /> <span th:text="'(digits range: integer=4, fraction=2)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('digits')}" th:errors="*{digits}"/>
+
+    <br/><br/>
+    futuredate:
+    <input type="text" th:field="*{futuredate}" />
+    <div style="color: red" th:if="${#fields.hasErrors('futuredate')}" th:errors="*{futuredate}"/>
+
+    <br/><br/>
+    sizemax:
+    <input type="text" th:field="*{sizemax}"/> <span th:text="'(sizemax less than or equal to 15)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('sizemax')}" th:errors="*{sizemax}"/>
+
+    <br/><br/>
+    sizemin:
+    <input type="text" th:field="*{sizemin}" /> <span th:text="'(sizemin greater than or equal to 7)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('sizemin')}" th:errors="*{sizemin}"/>
+
+    <br/><br/>
+    pastdate:
+    <input type="text" th:field="*{pastdate}" />
+    <div style="color: red" th:if="${#fields.hasErrors('pastdate')}" th:errors="*{pastdate}"/>
+
+    <br/><br/>
+    bankaccountnumber:
+    <input size="40" type="text" th:field="*{bankaccountnumber}" /> <span th:text="'(pattern: 00000000-00000000-00000000)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('bankaccountnumber')}" th:errors="*{bankaccountnumber}"/>
+
+    <br/><br/>
+    textcontent:
+    <input type="text" th:field="*{textcontent}" /> <span th:text="'(size: min=2, max=240)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('textcontent')}" th:errors="*{textcontent}"/>
+
+    <br/><br/>
+    assertfalse
+    <input type="checkbox" th:field="*{assertfalse}"/> <span th:text="'(assertfalse must be false)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('assertfalse')}" th:errors="*{assertfalse}"/>
+
+
+    <br/><br/>
+    asserttrue
+    <input type="checkbox" th:field="*{asserttrue}" /> <span th:text="'(asserttrue must be true)'"/>
+    <div style="color: red" th:if="${#fields.hasErrors('asserttrue')}" th:errors="*{asserttrue}"/>
+
+
+    <br/><br/>
+    <button type="submit">Send</button>
+
+</form>
+
+</body>
+</html>
